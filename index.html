@@ -19,7 +19,7 @@
             <a href="#projects" class="hero-button">View My Work</a>
             <a class="hero-button secondary" href="cv.pdf"> Download CV</a>
             
-            <div class="tutor-quote">
+            <div class="tutor-quote" id="tutor-quote">
                 <p id="quote-text"></p>
                 <span id="quote-author"></span>
             </div>
@@ -63,41 +63,57 @@
         </div>
     </section>
 
-    <!-- Projects Section -->
-    <section id="projects">
-        <h2>Projects</h2>
+<section class="featured-project">
 
-<div class="project-filters">
+<h2>Featured Project</h2>
 
-<button class="filter-btn active" onclick="filterProjects('all')">All</button>
+<div class="featured-container">
 
-<button class="filter-btn" onclick="filterProjects('machining')">Machining</button>
+<img src="images/shaft1.jpg" alt="Lathe shaft project">
 
-<button class="filter-btn" onclick="filterProjects('design')">Design</button>
-
-<button class="filter-btn" onclick="filterProjects('manufacturing')">Manufacturing</button>
-
-</div>
-
-        <div class="project-grid">
-
-            <!-- Project 1 -->
-           <div class="project machining manufacturing">
-
-<a href="projects/lathe-shaft.html">
-
+<div class="featured-text">
 
 <h3>Lathe Turned Shaft</h3>
 
 <p>
-Manufactured a stepped shaft using a centre lathe and 3-jaw chuck.
+Precision machining project completed using a centre lathe.
+Operations included facing, turning and dimensional inspection
+using workshop metrology equipment.
 </p>
 
+<a class="hero-button" href="projects/lathe-shaft.html">
+View Full Project
 </a>
 
+</div>
 
-           
-    </section>
+</div>
+
+</section>
+
+<!-- Projects Section-->
+
+<section id="projects">
+  <h2>Projects</h2>
+
+  <div class="project-grid">
+
+    <!-- Lathe Turned Shaft -->
+    <div class="project-card machining">
+      <h3>Lathe Turned Shaft</h3>
+      <p>Precision machining using a centre lathe.</p>
+      <a href="projects/lathe-shaft.html">View Project</a>
+    </div>
+
+    <!-- Drill, Tap & Gauge Block -->
+    <div class="project-card machining">
+      <h3>Drill, Tap & Gauge Block</h3>
+      <p>Drilling, tapping and thread inspection using a plug gauge.</p>
+      <a href="projects/dtg.html">View Project</a>
+    </div>
+
+  </div>
+</section>
 
     <!-- Contact Section -->
     <section id="contact">
@@ -110,7 +126,6 @@ Manufactured a stepped shaft using a centre lathe and 3-jaw chuck.
     <footer>
         <p>© 2026 Callum Bartaby</p>
         <div class="social-links">
-            <a href="https://github.com/yourusername" target="_blank">GitHub</a> |
             <a href="https://linkedin.com/in/yourprofile" target="_blank">LinkedIn</a>
         </div>
     </footer>
@@ -194,9 +209,13 @@ const quotes = [
 
 {
 text: "Callum is always on task in my lessons.",
-author: "— Emma, electrical lecturer"
+author: "— Emma, Electrical Engineering Tutor"
 },
 
+{
+text: "Always completes the class work without hassle.",
+author: "— Emma, Electrical Engineering Tutor"
+},
 
 {
 text: "Produces very accurate work and understands machining processes well.",
@@ -215,8 +234,11 @@ const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
 document.getElementById("quote-text").textContent = `"${randomQuote.text}"`;
 document.getElementById("quote-author").textContent = randomQuote.author;
 
-</script>
+setTimeout(() => {
+document.getElementById("tutor-quote").classList.add("show");
+}, 200);
 
+</script>
 
 </body>
 </html>
