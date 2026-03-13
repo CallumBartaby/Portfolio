@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Aluminium Phone Holder</title>
+
+<link rel="stylesheet" href="../style.css">
+
+</head>
+
+<body>
+
+<nav>
+
+<a href="../index.html#about">About</a>
+<a href="../index.html#skills">Skills</a>
+<a href="../index.html#projects">Projects</a>
+<a href="../index.html#contact">Contact</a>
+
+</nav>
+
+<section>
+
+<a class="hero-button" href="../projects.html">
+← Back to All Projects
+</a>
+
+<header class="project-hero">
+
+<h1>Aluminium Phone Holder</h1>
+<p>Machining Project | Aluminium Fabrication</p>
+
+</header>
+
+
+<!-- Tabs -->
+
+<div class="tabs">
+
+<button class="tab-button active" onclick="openTab(event,'overview')">
+Overview
+</button>
+
+<button class="tab-button" onclick="openTab(event,'gallery')">
+Gallery
+</button>
+
+<button class="tab-button" onclick="openTab(event,'documents')">
+Documents
+</button>
+
+</div>
+
+
+<!-- Overview -->
+
+<div id="overview" class="tab-content active">
+
+<h2>Overview</h2>
+
+<p>
+This project involved manufacturing a functional phone holder from
+aluminium using workshop machining processes. The objective was to
+produce a stable stand capable of supporting a mobile phone at a
+comfortable viewing angle.
+</p>
+
+<p>
+The component was produced using a combination of milling, drilling
+and finishing processes. Dimensional accuracy and surface quality
+were checked using precision measuring tools throughout the process.
+</p>
+
+<p>
+The project developed skills in aluminium machining, safe machine
+operation and workshop finishing techniques.
+</p>
+
+
+<div class="project-specifications">
+
+<h3>Project Specifications</h3>
+
+<div class="spec-grid">
+
+<div class="spec-item">
+<span class="spec-title">Material</span>
+<span class="spec-value">Aluminium</span>
+</div>
+
+<div class="spec-item">
+<span class="spec-title">Processes</span>
+<span class="spec-value"> Drilling, Bending</span>
+</div>
+
+<div class="spec-item">
+<span class="spec-title">Tools Used</span>
+<span class="spec-value">Pillar Drill, Rivet Gun, Box and Pan Folder</span>
+</div>
+
+<div class="spec-item">
+<span class="spec-title">Purpose</span>
+<span class="spec-value">Mobile Phone Stand</span>
+</div>
+
+</div>
+
+</div>
+
+
+<div class="drawing-section">
+
+<h3>Engineering Drawing</h3>
+
+<img src="../images/phone-holder-eng-img.jpg"
+alt="Phone holder engineering drawing"
+class="drawing-image">
+
+</div>
+
+</div>
+
+
+<!-- Gallery -->
+
+<div id="gallery" class="tab-content">
+
+<h2>Gallery</h2>
+
+<div class="gallery-grid">
+
+<img src="../images/phone-holder-img.jpg" class="gallery-img">
+
+</div>
+
+</div>
+
+
+<!-- Documents -->
+
+<div id="documents" class="tab-content">
+
+<h2>Documents</h2>
+
+<a class="hero-button"
+href="../reports/phone-holder-report.pdf"
+download>
+
+Download Project Report (PDF)
+
+</a>
+
+</div>
+
+
+<!-- Navigation -->
+
+<div class="project-nav-buttons">
+
+<a class="prev-project" href="lathe-maintenance.html">
+← Previous Project
+</a>
+
+<a class="next-project" href="#">
+Next Project →
+</a>
+
+</div>
+
+</section>
+
+
+<!-- Lightbox -->
+
+<div id="lightbox" class="lightbox">
+
+<span class="lightbox-close" id="lightbox-close">×</span>
+
+<img id="lightbox-img">
+
+<span class="lightbox-prev" id="lightbox-prev">&#10094;</span>
+<span class="lightbox-next" id="lightbox-next">&#10095;</span>
+
+</div>
+
+
+<script>
+
+function openTab(evt, tabName){
+
+let tabs = document.getElementsByClassName("tab-content");
+let buttons = document.getElementsByClassName("tab-button");
+
+for(let i=0;i<tabs.length;i++){
+tabs[i].classList.remove("active");
+}
+
+for(let i=0;i<buttons.length;i++){
+buttons[i].classList.remove("active");
+}
+
+document.getElementById(tabName).classList.add("active");
+evt.currentTarget.classList.add("active");
+
+}
+
+let currentImageIndex = 0;
+let galleryImages = [];
+
+window.addEventListener('DOMContentLoaded', () => {
+
+galleryImages = Array.from(document.querySelectorAll('#gallery .gallery-img'));
+
+galleryImages.forEach((img, index) => {
+img.addEventListener('click', () => openLightbox(index));
+});
+
+document.getElementById('lightbox-close').addEventListener('click', closeLightbox);
+document.getElementById('lightbox-prev').addEventListener('click', () => changeLightbox(-1));
+document.getElementById('lightbox-next').addEventListener('click', () => changeLightbox(1));
+
+});
+
+function openLightbox(index){
+
+currentImageIndex = index;
+document.getElementById('lightbox-img').src = galleryImages[currentImageIndex].src;
+document.getElementById('lightbox').style.display = 'flex';
+
+}
+
+function closeLightbox(){
+
+document.getElementById('lightbox').style.display = 'none';
+
+}
+
+function changeLightbox(direction){
+
+currentImageIndex += direction;
+
+if(currentImageIndex < 0) currentImageIndex = galleryImages.length - 1;
+if(currentImageIndex >= galleryImages.length) currentImageIndex = 0;
+
+document.getElementById('lightbox-img').src = galleryImages[currentImageIndex].src;
+
+}
+
+document.addEventListener('keydown', function(e){
+  const lightbox = document.getElementById('lightbox');
+  if(lightbox.style.display === 'flex'){
+    if(e.key === 'ArrowLeft') changeLightbox(-1);
+    if(e.key === 'ArrowRight') changeLightbox(1);
+    if(e.key === 'Escape') closeLightbox();
+  }
+});
+</script>
+
+</body>
+
+</html>
