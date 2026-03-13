@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>All Projects</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<nav>
+
+<a href="index.html#about">About</a>
+<a href="index.html#skills">Skills</a>
+<a href="projects.html">Projects</a>
+<a href="index.html#contact">Contact</a>
+
+</nav>
+
+<section>
+
+<header class="project-hero">
+
+<h1>All Projects</h1>
+<p>Engineering Work & Technical Projects</p>
+
+</header>
+
+
+<!-- FILTER BUTTONS -->
+
+<div class="project-filters">
+
+<button onclick="filterProjects('all')">All</button>
+<button onclick="filterProjects('machining')">Machining</button>
+<button onclick="filterProjects('analysis')">Analysis</button>
+<button onclick="filterProjects('maintenance')">Maintenance</button>
+
+</div>
+
+
+<!-- PROJECT GRID -->
+
+<div class="projects-grid projects-archive">
+
+<!-- Lathe Shaft -->
+
+<div class="project-card" data-category="machining">
+
+
+
+<h3>Lathe Turned Shaft</h3>
+
+<p>Machining a stepped shaft using a centre lathe.</p>
+
+<a href="projects/lathe-shaft.html" class="project-button">
+View Project
+</a>
+
+</div>
+
+
+<!-- DTG -->
+
+<div class="project-card" data-category="machining">
+
+
+
+<h3>Drill & Thread Gauge</h3>
+
+<p>Manufacturing and inspection of a drill and thread gauge.</p>
+
+<a href="projects/dtg.html" class="project-button">
+View Project
+</a>
+
+</div>
+
+
+<!-- Milling Machine -->
+
+<div class="project-card" data-category="analysis">
+
+
+
+<h3>Bridgeport Drive System</h3>
+
+<p>Analysis of the mechanical drive system of a Bridgeport milling machine.</p>
+
+<a href="projects/milling-machine.html" class="project-button">
+View Project
+</a>
+
+</div>
+
+
+<!-- Lathe Maintenance -->
+
+<div class="project-card" data-category="maintenance">
+
+
+
+<h3>Centre Lathe Maintenance</h3>
+
+<p>Routine cleaning, lubrication and inspection of a centre lathe.</p>
+
+<a href="projects/lathe-maintenance.html" class="project-button">
+View Project
+</a>
+
+</div>
+
+<div class="project-card" data-category="machining">
+
+<h3>Aluminium Phone Holder</h3>
+
+<p>
+Machining and finishing an aluminium phone holder using milling,
+drilling and precision measurement techniques.
+</p>
+
+<a href="projects/aluminium-phone-holder.html" class="project-button">
+View Project
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+
+<script>
+
+function filterProjects(category){
+
+let projects = document.querySelectorAll(".project-card");
+
+projects.forEach(project => {
+
+if(category === "all"){
+project.style.display = "block";
+}
+
+else if(project.dataset.category === category){
+project.style.display = "block";
+}
+
+else{
+project.style.display = "none";
+}
+
+});
+
+}
+
+</script>
+
+</body>
+
+</html>
