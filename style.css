@@ -702,3 +702,8 @@ padding-left:20px;
 .contact-form button:hover {
     background: #0ea5e9;
 }
+
+.contact-form button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
