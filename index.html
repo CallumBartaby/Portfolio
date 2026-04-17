@@ -7,6 +7,7 @@
     <title>Callum Bartaby | Engineering Portfolio</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 
 <body>
@@ -29,14 +30,14 @@
 
     <!-- Navigation -->
     <nav>
-        <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
+        <a href="#about" id="nav-about">About</a>
+        <a href="#skills" id="nav-skills">Skills</a>
+        <a href="#projects" id="nav-projects">Projects</a>
+        <a href="#contact" id="nav-contact">Contact</a>
     </nav>
 
     <!-- About Section -->
-    <section id="about">
+    <section id="about" class="fade-in">
         <h2>About Me</h2>
         <p>
             I am a T-Level engineering student with experience in machining,
@@ -47,29 +48,36 @@
     </section>
 
     <!-- Skills Section -->
-    <section id="skills">
+    <section id="skills" >
         <h2>Skills</h2>
-        <div class="skill">
+        <div class="skill fade-in">
             <p>Machining</p>
-            <div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div>
+            <div class="skill-bar">
+                <div class="skill-fill" data-width="90%"></div>
+            </div>
         </div>
-        <div class="skill">
+        <div class="skill fade-in">
             <p>Technical Drawing</p>
-            <div class="skill-bar"><div class="skill-fill" style="width:85%"></div></div>
+            <div class="skill-bar">
+                <div class="skill-fill" data-width="85%"></div>
+            </div>
         </div>
-        <div class="skill">
+        <div class="skill fade-in">
             <p>Engineering Design</p>
-            <div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div>
+            <div class="skill-bar">
+                <div class="skill-fill" data-width="80%">
+                </div>
+            </div>
         </div>
     </section>
 
-<section class="featured-project">
+<section class="featured-project" class="fade-in">
 
 <h2>Featured Project</h2>
 
 <div class="featured-container">
 
-<img src="images/Shaft1.jpg" alt="Lathe shaft project">
+<img src="images/shaft1.jpg" alt="Lathe shaft project">
 
 <div class="featured-text">
 
@@ -93,7 +101,7 @@ View Full Project
 
 <!-- Projects Section-->
 
-<section id="projects">
+<section id="projects" class="fade-in">
   <h2>Projects</h2>
 
   <div class="project-grid">
@@ -154,18 +162,30 @@ View All Projects →
   </div>
 </section>
 
-    <!-- Contact Section -->
-    <section id="contact">
-        <h2>Contact</h2>
-        <p>Email: c.bartaby09@gmail.com</p>
-        <p>Phone: +44 7752822885</p>
-    </section>
+   <section id="contact" class="fade-in">
 
+<h2>Contact Me</h2>
+
+<form action="https://formspree.io/f/xkokrwpe" method="POST" class="contact-form">
+
+<input type="text" name="name" placeholder="Your Name" required>
+
+<input type="email" name="email" placeholder="Your Email" required>
+
+<textarea name="message" placeholder="Your Message" required></textarea>
+
+<div class="g-recaptcha" data-sitekey="6LePC7wsAAAAAKZKVUY2dEOgRJzcmGdor6gzHFPR"></div>
+
+<button type="submit">Send Message</button>
+
+</form>
+
+</section>
     <!-- Footer -->
     <footer>
         <p>© 2026 Callum Bartaby</p>
         <div class="social-links">
-            <a href="https://linkedin.com/in/yourprofile" target="_blank">LinkedIn</a>
+            <a href="https://www.linkedin.com/in/callum-bartaby-40404a38b/" target="_blank">LinkedIn</a>
         </div>
     </footer>
 
@@ -276,6 +296,47 @@ document.getElementById("quote-author").textContent = randomQuote.author;
 setTimeout(() => {
 document.getElementById("tutor-quote").classList.add("show");
 }, 200);
+
+</script>
+
+<script>
+const faders = document.querySelectorAll('.fade-in');
+
+const appearOptions = {
+    threshold: 0.2
+};
+
+const appearOnScroll = new IntersectionObserver(function(entries, observer){
+    entries.forEach(entry => {
+        if(!entry.isIntersecting) return;
+
+        entry.target.classList.add('show');
+        observer.unobserve(entry.target);
+    });
+}, appearOptions);
+
+faders.forEach(fader => {
+    appearOnScroll.observe(fader);
+});
+</script>
+
+<script>
+
+const skillBars = document.querySelectorAll('.skill-fill');
+
+const skillsObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if(!entry.isIntersecting) return;
+
+        let bar = entry.target;
+        bar.style.width = bar.dataset.width;
+
+    });
+}, { threshold: 0.5 });
+
+skillBars.forEach(bar => {
+    skillsObserver.observe(bar);
+});
 
 </script>
 
